@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>payment</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<description></description>
+		<display-name>paymentGatewayController</display-name>
+		<servlet-name>paymentGatewayController</servlet-name>
+		<servlet-class>com.onward.payment.controller.PaymentGatewayController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>paymentGatewayController</servlet-name>
+		<url-pattern>/pay</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>PaymentGatewayAction</servlet-name>
+		<servlet-class>com.appsdaily.core.controller.ActionHandlerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PaymentGatewayAction</servlet-name>
+		<url-pattern>/paymentAction</url-pattern>
+	</servlet-mapping>
+
+
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+	<resource-ref>
+		<res-ref-name>java:/apps_store</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	<resource-ref>
+		<res-ref-name>java:/SCMDS</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+</web-app>
